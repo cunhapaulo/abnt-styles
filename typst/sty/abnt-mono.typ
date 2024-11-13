@@ -345,12 +345,12 @@
         } else {
           date.year()
         }
-        [©#year #owners\.]
+        // [©#year #owners\.]
         parbreak()
 
         let href = addr => link(addr, raw(addr))
         let url-license = "https://creativecommons.org/licenses/by/4.0/"
-        [License: CC-BY 4.0, see #href(url-license).]
+        // [License: CC-BY 4.0, see #href(url-license).]
         if not is_preprint {
           let url-attrib = (
             "http://jmlr.org/papers/v", str(pubdata.volume), "/",
@@ -422,7 +422,26 @@
 
   make-title(title, authors, affls, abstract, keywords, editors)
   parbreak()
+  
+  //-----------------------------------
   body
+  
+  if bibliography != none {
+    show heading: it => {
+      show: h1
+
+      block(above: 0.32in, it.body)
+    }
+    // TODO(@daskol): Closest bibliography style is "bristol-university-press".
+    set std-bibliography(
+      title: [#label.references],
+      style: "bristol-university-press")
+
+    set par(justify: true, leading: 5pt, first-line-indent: 0pt, hanging-indent: 20pt)
+
+    //-----------------------------------
+    bibliography
+  }
 
   if appendix != none {
     set heading(numbering: "A.1.", supplement: [Appendix])
@@ -439,18 +458,9 @@
 
     counter(heading).update(0)
     pagebreak()
+    
+    //-----------------------------------
     appendix
   }
 
-  if bibliography != none {
-    show heading: it => {
-      show: h1
-      block(above: 0.32in, it.body)
-    }
-    // TODO(@daskol): Closest bibliography style is "bristol-university-press".
-    set std-bibliography(
-      title: [#label.references],
-      style: "bristol-university-press")
-    bibliography
-  }
 }

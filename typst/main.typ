@@ -1,5 +1,7 @@
-#import "/abnt-mono.typ": jmlr
-#import "/blindtext.typ": blindtext, blindmathpaper
+#import "/sty/abnt-mono.typ": jmlr
+#import "/txt/blindtext.typ": blindtext, blindmathpaper
+
+#set text(lang: "PT" )
 
 #let affls = (
   one: (
@@ -26,12 +28,12 @@
 )
 
 #show: jmlr.with(
-  title: [Sample JMLR Paper],
+  title: [One Sample JMLR Paper],
   authors: (authors, affls),
   abstract: blindtext,
   keywords: ("keyword one", "keyword two", "keyword three"),
-  bibliography: bibliography("main.bib"),
-  appendix: include "appendix.typ",
+  bibliography: bibliography("/bib/main.bib"),
+  appendix: include "/txt/appendix.typ",
   pubdata: (
     id: "21-0000",
     editor: "My editor",
@@ -49,7 +51,7 @@
 
 Here is a citation @chow68.
 
-= Acknowledgments and Disclosure of Funding
+== Acknowledgments and Disclosure of Funding
 
 All acknowledgements go at the end of the paper before appendices and
 references. Moreover, you are required to declare funding (financial activities

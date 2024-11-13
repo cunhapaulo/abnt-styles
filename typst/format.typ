@@ -1,5 +1,5 @@
-#import "/abnt-mono.typ": jmlr
-#import "/logo.typ": LaTeX
+#import "/sty/abnt-mono.typ": jmlr
+#import "/txt/logo.typ": LaTeX
 
 #let affls = (
   one: (
@@ -38,8 +38,8 @@
     to its recommendations throughout the submission process.
   ],
   keywords: ("keyword one", "keyword two", "keyword three"),
-  bibliography: bibliography("format.bib"),
-  appendix: include "format-appendix.typ",
+  bibliography: bibliography("/bib/format.bib"),
+  appendix: include "/txt/format-appendix.typ",
   pubdata: (
     id: "21-0000",
     editor: "My editor",
