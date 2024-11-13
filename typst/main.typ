@@ -15,9 +15,11 @@
 )
 
 #let authors = (
+  
   (name: "Author One",
    affl: "one",
    email: "one@stat.washington.edu"),
+   
   (name: "Author Two",
    affl: "two",
    email: "two@cs.berkeley.edu"),

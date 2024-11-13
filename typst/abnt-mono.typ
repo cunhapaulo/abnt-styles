@@ -200,9 +200,10 @@
     let abstract_text = text(size: font-size.small, weight: "light", abstract)
 
     align(left,
-      text(size: font-size.small, weight: "bold", [*#label.abstract*: #abstract_text]))
+      text(size: font-size.small, weight: "bold", pad(left: 40pt, right:40pt, [*#label.abstract*: #abstract_text])))
+      // text(size: font-size.small, weight: "bold", [*#label.abstract*: #abstract_text]))
     v(8.2pt, weak: true)
-    // pad(left: 0pt, right: 0pt, abstract)
+    // pad(left: 40pt, right: 40pt, abstract)
   })
 
   // Render keywords if exist.
@@ -212,7 +213,7 @@
     block(spacing: 0em, width: 100%, {
       set text(size: 10pt)
       set par(leading: 0.51em)  // Original 0.55em (or 0.45em?).
-      pad(left: 0pt, right: 0pt)[*#label.keywords:* #keywords.]
+      pad(left: 40pt, right: 40pt)[*#label.keywords:* #keywords.]
     })
   }
 
