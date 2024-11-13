@@ -44,6 +44,7 @@
   ),
 )
 
+
 = Introduction
 
 #set math.equation(numbering: "(1)")  // There are no numbers in sample paper.

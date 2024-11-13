@@ -1,37 +1,39 @@
 /**
- * abnt-mono.typ
+ * abnt-paper.typ
  *
- * This is a Typst template for ABNT Monographs (ABNT-MONO). It
+ * This is a Typst template for ABNT papers (ABNT-PAPER). It
  * is tries to be based on ABNT references.
- *
- * [1]: https://www.jmlr.org/format/authors-guide.html
- * [2]: https://www.jmlr.org/format/format.html
- * [3]: https://www.jmlr.org/format/formatting-errors.html
- * [4]: https://github.com/jmlrorg/jmlr-style-file
- *
  * Special thanks to the authors of the JMLR package for Typst.
+ *
  */
 
 #let std-bibliography = bibliography  // Due to argument shadowing.
 
-#let font-family = ("New Computer Modern", "Times New Roman",
-                    "Latin Modern Roman", "CMU Serif",
-                    "New Computer Modern", "Serif")
+#let font-family = (  
+                      "New Computer Modern", 
+                      "Times New Roman",
+                      "Latin Modern Roman", 
+                      "Serif",
+                      "CMU Serif",
+                   )
 
-#let font-family-mono = ("Latin Modern Mono", "New Computer Modern Mono",
-                         "Mono")
+#let font-family-mono = ( 
+                          "Latin Modern Mono", 
+                          "New Computer Modern Mono",
+                          "Mono"
+                        )
 
 #let font-size = (
-  tiny: 6pt,
-  script: 8pt,   // scriptsize
-  footnote: 9pt, // footnotesize
-  small: 10pt,
-  normal: 11pt,  // normalsize
-  large: 12pt,
-  Large: 14pt,
-  LARGE: 17pt,
-  huge: 20pt,
-  Huge: 25pt,
+    tiny:     6pt,
+    script:   8pt,   // scriptsize
+    footnote: 9pt,   // footnotesize
+    small:    10pt,
+    normal:   11pt,  // normalsize
+    large:    12pt,
+    Large:    14pt,
+    LARGE:    17pt,
+    huge:     20pt,
+    Huge:     25pt,
 )
 
 /**
@@ -49,20 +51,20 @@
  * Special label in portuguese.
  */
 #let label = (
-  abstract: "Resumo",
-  appendix: "Apêndice",
-  image: "figura",
-  keywords: "Palavras-chave",
-  references: "Referências",
-  table: "tabela",
+    abstract:   "Resumo",
+    appendix:   "Apêndice",
+    image:      "figura",
+    keywords:   "Palavras-chave",
+    references: "Referências",
+    table:      "tabela",
 )
 
 #let pageformat = (
-  paper: "a4",
-  top: 3cm,
-  bottom: 2.5cm,
-  left: 3cm,
-  right: 2cm,
+    paper:  "a4",
+    top:    3cm,
+    bottom: 2.5cm,
+    left:   3cm,
+    right:  2cm,
 )
 
 /**
@@ -424,7 +426,8 @@
   parbreak()
   
   //-----------------------------------
-  body
+    body
+  //-----------------------------------
   
   if bibliography != none {
     show heading: it => {
@@ -435,12 +438,14 @@
     // TODO(@daskol): Closest bibliography style is "bristol-university-press".
     set std-bibliography(
       title: [#label.references],
-      style: "bristol-university-press")
+      // style: "bristol-university-press")
+      style: "/sty/abnt-ufrgs.csl")
 
     set par(justify: true, leading: 5pt, first-line-indent: 0pt, hanging-indent: 20pt)
 
     //-----------------------------------
-    bibliography
+      bibliography
+    //-----------------------------------
   }
 
   if appendix != none {
@@ -460,7 +465,8 @@
     pagebreak()
     
     //-----------------------------------
-    appendix
+      appendix
+    //-----------------------------------
   }
 
 }
