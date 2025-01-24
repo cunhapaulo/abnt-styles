@@ -67,12 +67,6 @@
     right:  2cm,
 )
 
-#let institution = (
-  name:       "Universidade Federal do Pará",
-  department: "Instituto de Filosofia e Ciências Humanas",
-  faculty:    "Faculdade de Filosofia",
-)
-
 /**
  * h, h1, h2, h3 - Style rules for headings.
  */
@@ -315,15 +309,15 @@
           return date
             .display(supplement + " [month padding:none]/[year repr:last_two]")
         }
-        let submitted = format-date(pubdata.submitted-at, "Submitted")
-        let revised = format-date(pubdata.revised-at, "Revised")
-        let published = format-date(pubdata.published-at, "Published")
+        let submitted = format-date(pubdata.submitted-at, "Submetido:")
+        let revised = format-date(pubdata.revised-at, "Revisado:")
+        let published = format-date(pubdata.published-at, "Publicado:")
 
         set text(size: font-size.script)
         grid(
           columns: (1fr, 1fr),
           align: (left, right),
-          [Journal of Machine Learning Research #volume (#year) 1-#nopages],
+          [VII Colóquio Kant e o Kantismo #volume (#year) 1-#nopages],
           [#submitted\; #revised\; #published])
       } else if calc.rem(pageno, 2) == 0 {
         set align(center)
@@ -364,7 +358,7 @@
             "http://jmlr.org/papers/v", str(pubdata.volume), "/",
             pubdata.id, ".html",
           ).join()
-          [Attribution requirements are provided at #href(url-attrib).]
+          // [Attribution requirements are provided at #href(url-attrib).] // paulo.cunha
         }
       } else {
         v(-1pt)  // Compensatation for what?
@@ -427,20 +421,6 @@
     let index = it.supplement + [~] + numb + it.separator
     grid(columns: 2, column-gutter: 5pt, align: left, index, it.body)
   }
-
-  // pagebreak()
-
-  align(center)[
-    #block(height: 100%, width: 100%)[
-      #image("../fig/ufpa.png", width: 13%)
-      #upper[
-              #set text(size: font-size.small)
-              #institution.name\
-              #institution.department\
-              #institution.faculty
-            ]
-    ]
-  ]
 
   make-title(title, authors, affls, abstract, keywords, editors)
   parbreak()
